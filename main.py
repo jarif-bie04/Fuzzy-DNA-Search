@@ -55,13 +55,11 @@ def custom_fuzzy_search(seq, query_seq, match_val, mismatch_val, gap_penalty, to
                 m, n = len(sub_query), len(subject)
                 dp = [[0] * (n + 1) for _ in range(m + 1)]
 
-                # Initialize gap penalties
                 for x in range(1, m + 1):
                     dp[x][0] = x * gap_penalty
                 for y in range(1, n + 1):
                     dp[0][y] = y * gap_penalty
 
-                # Fill in DP table
                 for x in range(1, m + 1):
                     for y in range(1, n + 1):
                         match = dp[x - 1][y - 1] + (match_val if sub_query[x - 1] == subject[y - 1] else mismatch_val)
@@ -80,7 +78,7 @@ def custom_fuzzy_search(seq, query_seq, match_val, mismatch_val, gap_penalty, to
                     'score': score
                 })
 
-    sorted_results = sorted(results, key=lambda x: x['score'], reverse=True)[:top_hits]
+    sorted_results = sorted(results, key=lambda a: a['score'], reverse=True)[:top_hits]
     return sorted_results
 
 def search_func():
