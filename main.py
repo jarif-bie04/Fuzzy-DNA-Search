@@ -40,11 +40,11 @@ def upload_file():
         except Exception as e:
             messagebox.showerror("File Error", f"Error reading file: {e}")
 
+
 def custom_fuzzy_search(seq, query_seq, match_val, mismatch_val, gap_penalty, top_hits):
     results = []
     seq = seq.upper()
     query_seq = query_seq.upper()
-
     for qlen in range(len(query_seq), 0, -1):
         for qstart in range(len(query_seq) - qlen + 1):
             sub_query = query_seq[qstart:qstart + qlen]
